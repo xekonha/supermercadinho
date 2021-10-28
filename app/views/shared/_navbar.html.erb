@@ -13,14 +13,12 @@
         <li class="nav-item active">
           <%= link_to "Home", "#", class: "nav-link" %>
         </li>
-        <li class="nav-item">
-          <%= link_to "Messages", "#", class: "nav-link" %>
+        <li class="nav-item active">
+          <%= link_to "Products", products_path, class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <img id="navbarDropdown" data-toggle="dropdown" class= "avatar dropdown-toggle" src="<%= image_url('avatar-person.svg') %>"  alt="Avatar">
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Perfil", "#", class: "dropdown-item" %>
-            <%= link_to "Another action", "#", class: "dropdown-item" %>
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
