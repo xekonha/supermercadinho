@@ -3,10 +3,11 @@ class OrdersController < ApplicationController
   # @order = order.all
   # Devido as regras do Scope definidas na minha orderPolicy
   # essas duas linhas retornam exatamente a mesma coisa
-  @orders = policy_scope(order)
+  @orders = policy_scope(Order)
   end
 
   def show
+    authorize @order
   end
 
   def new
@@ -51,11 +52,11 @@ class OrdersController < ApplicationController
   private
 
   def set_order
-    @order = order.find(params[:id])
+    @order = Order.find(params[:id])
     authorize @order
   end
 
   def order_params
-    params.require(:order).permit(:name, :description, :unit, :total_quantity, :price, :category)
+    params.require(:order).permit(:quantity, :date)
   end
 end

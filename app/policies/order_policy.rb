@@ -8,7 +8,7 @@ class OrderPolicy < ApplicationPolicy
   # Mas estão dentro da class RestaurantPolicy
 
   def show?
-    true
+    user_role_allowed? || user.role = 'admin'
   end
 
   def new?

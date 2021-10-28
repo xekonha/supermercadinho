@@ -1,5 +1,8 @@
 class ProductsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
   before_action :set_product, only: %i[show edit update destroy]
+  skip_after_action :verify_authorized, only: [:show]
+
   def index
     # @product = product.all
     # Devido as regras do Scope definidas na minha productPolicy
@@ -53,7 +56,6 @@ class ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
-    authorize @product
   end
 
   def product_params

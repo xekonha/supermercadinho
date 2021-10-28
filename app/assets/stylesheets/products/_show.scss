@@ -1,0 +1,10 @@
+// Specific CSS for your home-page
+.container img {
+  max-height: 400px;
+  max-width: 400px;
+}
+
+.btn:focus {
+  outline: none;
+  box-shadow: none;
+}

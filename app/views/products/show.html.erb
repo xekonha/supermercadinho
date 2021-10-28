@@ -1,12 +1,27 @@
-<p>
-  <strong>Name:</strong>
-  <%= @product.name %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @product.user.email %>
-</p>
-
+<div class="container mt-5">
+  <div class="row justify-content-between">
+    <div class="col-12 col-md-5 px-0">
+      <img src="<%= image_url('batata.jpeg') %>" class="card-img-top" alt="Batata">
+    </div>
+    <div class="col-12 col-md-7 p-3">
+      Categoria: <strong> <%= @product.category %> </strong>
+      <h2 class="my-3"> <strong> <%= @product.name %> </strong> - <%= @product.unit %> </h2>
+      <h1 style="color: #D92026;" class="mt-4">
+        <strong> R$ <%= number_to_currency(@product.price, unit: '', separator: ",") %> </strong>
+      </h1>
+      <div >
+        <button type="button" class="btn btn-subtract p-0" disabled>
+          <i style="color: red;" class="fas fa-minus-square fa-3x"></i>
+        </button>
+        <span style="width: 50px;"><input type="number" style="text-align:center; display:inline-block; "
+        class="form-control-sm item-quantity" value="1" disabled> </span>
+        <button type="button" class="btn btn-add p-0 mr-1">
+          <i style="color: green;" class="fas fa-plus-square fa-3x"></i>
+        </button>
+        <button type="button" class="btn btn-outline-danger"> Adicionar ao Carrinho </button>
+      </div>
+    </div>
+  </div>
+</div>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
