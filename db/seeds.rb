@@ -5,3 +5,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.all.each { |user| user.destroy } # clean db
+5.times {
+  @user = User.new
+  @user.name = Faker::Name.name
+  #@user.cpf = Faker::CPF.numeric
+  @user.email = Faker::Internet.email
+  @user.role = 'admin'
+  @user.password = '123456'
+  @user.save!
+}
+100.times {
+  @user = User.new
+  @user.name = Faker::Name.name
+  #@user.cpf = Faker::CPF.numeric
+  @user.email = Faker::Internet.email
+  @user.role = 'buyer'
+  @user.password = '123456'
+  @user.save!
+}

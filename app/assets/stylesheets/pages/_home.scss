@@ -3,3 +3,28 @@
   height: 400px;
   object-fit: cover;
 }
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-gap: 1em;
+  flex-grow: 1;
+  background: linear-gradient(black, purple);
+  border: rgb(77, 6, 105) solid 1em;
+  max-width: 200vh;
+}
+
+.card {
+  background: linear-gradient(lightyellow, rgb(218, 213, 205));
+  background-size: cover;
+  background-position: center;
+  height:auto;
+  border-radius: 3em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align:center;
+  color: black;
+  text-shadow: 0 0 10px #ebe5e5b3;
+}

@@ -31,4 +31,16 @@
   </div>
 </div>
 
-<%= link_to "Criar novo produto", new_product_path, class:"btn btn-success text-white", role:"button"%>
+<div class="categories">
+  <div class="cards mx-auto">
+    <% %w(acougue bazar bebidas congelados frios higiene hortifruti leite-derivados limpeza matinais).each do |category| %>
+      <%= link_to products_path do %>
+      <div class='card text-align-center m-3'>
+        <%= image_tag "#{category}.png" %>
+        <p> <%=category%> </p>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>

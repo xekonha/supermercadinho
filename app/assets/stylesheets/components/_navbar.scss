@@ -15,3 +15,8 @@
 .nav-item:not(:last-child) {
   box-shadow: 10px 0px 0px -9px red;
 }
+
+.banner2 {
+  // object-fit: cover;
+  object-fit: fill;
+}
