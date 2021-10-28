@@ -3,15 +3,15 @@
 //   width: 300px;
 // }
 
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
-  flex-grow: 1;
-  background: linear-gradient(black, purple);
-  border: rgb(77, 6, 105) solid 1em;
-  max-width: 200vh;
-}
+// .cards {
+//   display: grid;
+//   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+//   grid-gap: 1em;
+//   flex-grow: 1;
+//   background: linear-gradient(black, blue);
+//   border: red solid 1em;
+//   max-width: 200vh;
+// }
 
 .card {
   background: linear-gradient(yellow, lightyellow);

@@ -9,13 +9,13 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
   flex-grow: 1;
-  background: linear-gradient(black, purple);
-  border: rgb(77, 6, 105) solid 1em;
+  background: linear-gradient(black, lightgray);
+  border: red solid 1em;
   max-width: 200vh;
 }
 
 .card {
-  background: linear-gradient(yellow, lightyellow);
+  background: linear-gradient(lightyellow, yellow);
   background-size: cover;
   background-position: center;
   height:auto;
@@ -27,4 +27,8 @@
   text-align:center;
   color: black;
   text-shadow: 0 0 10px #ebe5e5b3;
+}
+
+.card-img-top {
+  border-radius: 2em;
 }
