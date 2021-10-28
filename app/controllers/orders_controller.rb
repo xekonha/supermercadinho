@@ -22,6 +22,7 @@ class OrdersController < ApplicationController
     # unless @order.user == current_user
     #   redirect_to orders_path
     # end
+    authorize @order
   end
 
   def create

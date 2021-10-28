@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row justify-content-between">
-    <div class="col-12 col-md-5 px-0">
-      <img src="<%= image_url('batata.jpeg') %>" class="card-img-top" alt="Batata">
+    <div id="product-image" class="col-12 col-md-5 px-0">
+      <%= cl_image_tag(@product.photo.key, class: "card-img-top", alt: @product.name) %>
     </div>
     <div class="col-12 col-md-7 p-3">
       Categoria: <strong> <%= @product.category %> </strong>
@@ -23,5 +23,8 @@
     </div>
   </div>
 </div>
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<br>
+<% if user_signed_in? %>
+<%= link_to 'Editar', edit_product_path(@product) %> |
+<%= link_to 'Produtos', products_path %>
+<% end %>
