@@ -34,8 +34,9 @@
 <div class="categories">
   <div class="cards mx-auto">
     <% %w(acougue bazar bebidas congelados frios higiene hortifruti leite-derivados limpeza matinais).each do |category| %>
-      <%= link_to products_path do %>
+      <%= link_to products_path(category) do %>
       <div class='card text-align-center m-3'>
+        <p></p>
         <%= image_tag "#{category}.png" %>
         <p> <%=category%> </p>
       </div>

@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
   end
 
   def update
+    authorize @product
     if @product.update(product_params)
       redirect_to @product, notice: 'product was successfully updated.'
     else
@@ -49,8 +50,14 @@ class ProductsController < ApplicationController
   end
 
   def destroy
+    authorize @product
     @product.destroy
     redirect_to products_url, notice: 'product was successfully destroyed.'
+  end
+
+  def category(category)
+    @category = category
+    @products = Product.where(category: @category)
   end
 
   private
