@@ -1,3 +1,5 @@
+
+
 <div class="container mt-5">
   <div class="row justify-content-between">
     <div id="product-image" class="col-12 col-md-5 px-0">
@@ -26,5 +28,5 @@
 <br>
 <% if user_signed_in? %>
 <%= link_to 'Editar', edit_product_path(@product) %> |
-<%= link_to 'Produtos', products_path %>
+<%= link_to 'Deletar', products_path %>
 <% end %>
