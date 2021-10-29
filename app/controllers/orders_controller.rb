@@ -1,17 +1,20 @@
 class OrdersController < ApplicationController
+  # skip_before_action :authenticate_user!, only: %i[index show category]
+  before_action :set_order, # only: %i[show edit update destroy]
+  skip_after_action :verify_authorized, # only: %i[show category]
+
   def index
-  # @order = order.all
-  # Devido as regras do Scope definidas na minha orderPolicy
-  # essas duas linhas retornam exatamente a mesma coisa
-  @orders = policy_scope(Order).where(user: current_user)
+    # @order = order.all
+    # Devido as regras do Scope definidas na minha orderPolicy
+    # essas duas linhas retornam exatamente a mesma coisa
+    @orders = policy_scope(order)
   end
 
   def show
-    authorize @order
   end
 
   def new
-    @order = Order.new
+    @order = order.new
     authorize @order
   end
 
@@ -26,38 +29,42 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = order.new(order_params)
     @order.user = current_user
     authorize @order
 
     if @order.save
-      redirect_to @order, notice: 'order was successfully created.'
+      redirect_to @order, notice: 'Concluído com sucesso: pedido criado.'
     else
       render :new
     end
   end
 
   def update
+    authorize @order
     if @order.update(order_params)
-      redirect_to @order, notice: 'order was successfully updated.'
+      redirect_to @order, notice: 'Concluído com sucesso: pedido atualizado.'
     else
       render :edit
     end
+    authorize @order
   end
 
   def destroy
+    authorize @order
     @order.destroy
-    redirect_to orders_url, notice: 'order was successfully destroyed.'
+    redirect_to orders_url, notice: 'Concluído com sucesso: pedido cancelado.'
+    authorize @order
   end
 
   private
 
-  def set_order
+  def set_product
     @order = Order.find(params[:id])
-    authorize @order
   end
 
   def order_params
-    params.require(:order).permit(:quantity, :date)
+    params.require(:order).permit(:product_id, :user_id, :quantity, :date, :price)
   end
+
 end

@@ -6,7 +6,7 @@
   <div class="cards">
       <% @products.each do |product| %>
         <div class="card mb-2" id="product-<%= product.name %>">
-          <%= link_to product do %>
+          <%= link_to product_path(product.id) do %>
             <%= cl_image_tag(product.photo.key, class: "card-img-top", alt: product.name) %>
             <h3 class="card-text fw-bold"><%= product.name %></h3>
             <h5>R$ <%= number_to_currency(product.price, unit: '', separator: ",") %></h5>

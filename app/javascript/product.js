@@ -17,7 +17,9 @@ const productQuantity = () => {
       if (quantity.value <= maximum) {
         add.disabled = false;
       }
-    });
+    });};
+
+  if (add) {
     add.addEventListener("click", function () {
     quantity.value++;
     if (quantity.value > minimum) {
@@ -26,8 +28,8 @@ const productQuantity = () => {
     if (quantity.value > maximum) {
       add.disabled = true;
     }
-  });
+    });
   }
 }
 
-export { productQuantity}
+export { productQuantity }

@@ -54,7 +54,6 @@ class ProductsController < ApplicationController
     authorize @product
     @product.destroy
     redirect_to products_url, notice: 'product was successfully destroyed.'
-    authorize @product
   end
 
   def category
