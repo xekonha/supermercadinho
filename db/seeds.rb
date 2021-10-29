@@ -25,3 +25,4 @@ User.all.each { |user| user.destroy } # clean db
   @user.password = '123456'
   @user.save!
 }
+

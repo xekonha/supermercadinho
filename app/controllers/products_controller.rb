@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[index show]
+  skip_before_action :authenticate_user!, only: %i[index show category]
   before_action :set_product, only: %i[show edit update destroy]
-  skip_after_action :verify_authorized, only: [:show]
+  skip_after_action :verify_authorized, only: %i[show category]
 
   def index
     # @product = product.all
@@ -55,9 +55,8 @@ class ProductsController < ApplicationController
     redirect_to products_url, notice: 'product was successfully destroyed.'
   end
 
-  def category(category)
-    @category = category
-    @products = Product.where(category: @category)
+  def category
+    @products = Product.where(category: params[:format])
   end
 
   private

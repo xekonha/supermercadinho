@@ -7,10 +7,10 @@
 .cards {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  grid-gap: 1em;
+  // grid-gap: 0;
   flex-grow: 1;
   background: linear-gradient(black, lightgray);
-  border: red solid 1em;
+  border: rgb(197, 50, 50) solid 0.2em;
   max-width: 200vh;
 }
 
@@ -18,7 +18,7 @@
   background: linear-gradient(lightyellow, yellow);
   background-size: cover;
   background-position: center;
-  height:auto;
+  height: auto;
   border-radius: 3em;
   box-shadow: 0 0 10px rgba(0,0,0,0.2);
   display: flex;
