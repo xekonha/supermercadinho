@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show category]
   before_action :set_product, only: %i[show edit update destroy]
-  skip_after_action :verify_authorized, only: %i[show category]
+  skip_after_action :verify_authorized, only: %i[show category my]
 
   def index
     # @product = product.all
@@ -32,9 +32,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
     authorize @product
-
     if @product.save
-      redirect_to @product, notice: 'product was successfully created.'
+      redirect_to @product, notice: 'Produto cadastrado com sucesso.'
     else
       render :new
     end
@@ -43,21 +42,24 @@ class ProductsController < ApplicationController
   def update
     authorize @product
     if @product.update(product_params)
-      redirect_to @product, notice: 'product was successfully updated.'
+      redirect_to @product, notice: 'Produto atualizado com sucesso.'
     else
       render :edit
     end
-    authorize @product
   end
 
   def destroy
     authorize @product
     @product.destroy
-    redirect_to products_url, notice: 'product was successfully destroyed.'
+    redirect_to products_url, notice: 'Produto removido com sucesso.'
   end
 
   def category
     @products = Product.where(category: params[:format])
+  end
+
+  def my
+    @products = current_user.products
   end
 
   private

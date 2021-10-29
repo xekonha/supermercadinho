@@ -40,6 +40,10 @@ class ProductPolicy < ApplicationPolicy
     user_role_allowed?
   end
 
+  def my?
+    true
+  end
+
   private
 
   def user_role_allowed?

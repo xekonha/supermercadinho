@@ -1,5 +1,3 @@
-
-
 <div class="container mt-5">
   <div class="row justify-content-between">
     <div id="product-image" class="col-12 col-md-5 px-0">
@@ -34,3 +32,4 @@
     <%= link_to 'Deletar', product_path(@product), method: :delete %>
   </div>
 <% end %>
+<%= javascript_pack_tag 'product' %>

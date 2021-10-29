@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :products, only: %i[index show new create edit update destroy] do
     collection do
       get :category
+      get :my
     end
   end
   resources :orders, only: %i[index show new create edit update destroy]
