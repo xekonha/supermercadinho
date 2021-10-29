@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   # @order = order.all
   # Devido as regras do Scope definidas na minha orderPolicy
   # essas duas linhas retornam exatamente a mesma coisa
-  @orders = policy_scope(Order)
+  @orders = policy_scope(Order).where(user: current_user)
   end
 
   def show

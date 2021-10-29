@@ -47,12 +47,14 @@ class ProductsController < ApplicationController
     else
       render :edit
     end
+    authorize @product
   end
 
   def destroy
     authorize @product
     @product.destroy
     redirect_to products_url, notice: 'product was successfully destroyed.'
+    authorize @product
   end
 
   def category

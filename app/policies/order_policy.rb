@@ -1,7 +1,7 @@
 class OrderPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.all # scope.all.where(user)
     end
   end
   # Repare que nossos metodos estão FORA da 'class Scope'
