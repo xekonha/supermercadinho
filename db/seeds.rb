@@ -1,19 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-require 'pry-byebug'
-
-# User.all.each { |usr| usr.destroy }
 @user = User.new('name' => 'rainey', 'email' => 'rainey.lopes@gmail.com', 'role' => 'admin', \
                  'password' => '123456')
 @user.save!
-# From <supermercadinho>/db/seeds
-# To   <supermercadinho>/assets/images/products/*.jpg|*.png
-# @all_files = Dir["./assets/images/products/*"]
 new_reg = {}
 path = "app/assets/images/products/"
 file_path = "#{path}*.*"
@@ -52,6 +39,7 @@ files.each_with_index do |file, index|
               'user' => @user }
 
   product = Product.new(new_reg)
+  product.user = @user
   ext = file_name.split(".")[1].downcase
   product.photo.attach(io: File.open(file),
                        filename: file_name,
