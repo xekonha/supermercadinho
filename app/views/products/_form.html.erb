@@ -12,7 +12,9 @@
     <%= f.input :photo, as: :file, label: 'Foto do Produto' %>
   </div>
 
-  <div class="form-actions btn btn-primary">
-    <%= f.button :submit %>
+  <div class="form-actions mt-5">
+    <% label = (params[:action] == 'new' ? 'Criar novo Produto' : 'Alterar Produto') %>
+    <%= f.submit label %>
   </div>
+  <p class='mb-5'>.</p>
 <% end %>

@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
     # @product = product.all
     # Devido as regras do Scope definidas na minha productPolicy
     # essas duas linhas retornam exatamente a mesma coisa
-    @products = policy_scope(Product)
+    @products = policy_scope(Product.order(:name.downcase))
   end
 
   def show
@@ -55,7 +55,7 @@ class ProductsController < ApplicationController
   end
 
   def category
-    @products = Product.where(category: params[:format])
+    @products = Product.order(:name.downcase).where(category: params[:format])
   end
 
   def my
