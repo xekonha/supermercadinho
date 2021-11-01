@@ -1,7 +1,12 @@
 // Specific CSS for your home-page
 #product-image {
-  max-height: 400px;
-  max-width: 400px;
+  width: 150px;
+  align-self: center;
+}
+#product-image > img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: scale-down;
 }
 
 .btn:focus {

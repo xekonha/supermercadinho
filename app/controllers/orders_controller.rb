@@ -1,20 +1,20 @@
 class OrdersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[index show category]
-  before_action :set_order, # only: %i[show edit update destroy]
-  skip_after_action :verify_authorized, # only: %i[show category]
+  # skip_before_action :authenticate_user!, only: %i[index show]
+  before_action :set_order, only: %i[edit update destroy]
+  # skip_after_action :verify_authorized, only: %i[show]
 
   def index
     # @order = order.all
     # Devido as regras do Scope definidas na minha orderPolicy
     # essas duas linhas retornam exatamente a mesma coisa
-    @orders = policy_scope(order)
+    @orders = policy_scope(Order)
   end
 
   def show
   end
 
   def new
-    @order = order.new
+    @order = Order.new
     authorize @order
   end
 
@@ -47,14 +47,12 @@ class OrdersController < ApplicationController
     else
       render :edit
     end
-    authorize @order
   end
 
   def destroy
     authorize @order
     @order.destroy
     redirect_to orders_url, notice: 'Concluído com sucesso: pedido cancelado.'
-    authorize @order
   end
 
   private
@@ -64,7 +62,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:product_id, :user_id, :quantity, :date, :price)
+    params.require(:order).permit(:product_id, :user_id, :quantity, :date)
   end
 
 end

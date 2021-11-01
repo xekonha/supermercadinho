@@ -27,3 +27,13 @@
 //   color: black;
 //   text-shadow: 0 0 10px #ebe5e5b3;
 // }
+
+.image-box {
+  width: 100px;
+  height: 100px;
+}
+.image-box img {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}

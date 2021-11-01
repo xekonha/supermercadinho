@@ -48,10 +48,10 @@ files.each_with_index do |file, index|
               'description' => parts[-2],
               'unit' => unit,
               'price' => ((0..100).to_a.sample.to_f - 0.01).round(2),
-              'total_quantity' => (1..100).to_a.sample }
+              'total_quantity' => (1..100).to_a.sample,
+              'user' => @user }
 
   product = Product.new(new_reg)
-  product.user = user
   ext = file_name.split(".")[1].downcase
   product.photo.attach(io: File.open(file),
                        filename: file_name,

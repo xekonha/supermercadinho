@@ -1,0 +1,43 @@
+<div class="cart">
+  <div class="cart-container">
+    <div class="cart-header">
+      <h3 class="cart-heading">Ordens</h3>
+      <h5 class="cart-action">Remover todos</h5>
+    </div>
+    <% @orders.each do |order| %>
+      <div class="cart-items">
+        <div class="image-box">
+          <%= cl_image_tag(order.product.photo.key, alt: order.product.name) %>
+        </div>
+        <div class="about">
+          <h2 class="title"><%= order.product.name %></h2>
+          <h3 class="subtitle"><%= order.product.unit %></h3>
+        </div>
+        <div class="counter">
+          <div class="btn-cart btn-subtract">-</div>
+          <div class="count"><%= order.quantity %></div>
+          <div class="btn-cart btn-add">+</div>
+        </div>
+        <div class="prices">
+          <div class="amount" data-price="<% number_to_currency(order.product.price, unit: '') %>">
+            R$ <%= number_to_currency(order.product.price, unit: '', separator: ",")%>
+          </div>
+          <div class="remove"><u>Remover</u></div>
+        </div>
+        <div style="display: none;" id="total_quantity" data-inventory="<%= order.product.total_quantity %>"> </div>
+      </div>
+    <% end %>
+    <hr>
+    <div class="checkout">
+      <div class="total">
+        <div class="">
+          <div class="subtotal">Subtotal</div>
+          <div class="items"><%=@orders.length %> itens</div>
+        </div>
+        <div class="total-amount">R$ <span id="total"> 177,43 </span></div>
+      </div>
+      <button class="checkout-button">Finalizar compra</button>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'order' %>

@@ -1,35 +1,42 @@
 <div class="container mt-5">
-  <div class="row-justify-content-between">
-    <div id="product-image" class="col-12 col-md-5 px-0  d-inline">
-      <%= cl_image_tag(@product.photo.key, class: "card-img-top", alt: @product.name) %>
+  <div class="row justify-content-between">
+    <div id="product-image" class="col-sm-12 col-md-6 col-lg-4">
+      <%= cl_image_tag(@product.photo.key, alt: @product.name) %>
     </div>
-    <div class="col-12 col-md-7">
+    <div class="col-sm-12 col-md-6 col-lg-8 ">
       Categoria: <strong> <%= @product.category %> </strong>
       <h2 class="my-3"> <strong> <%= @product.name %> </strong> - <%= @product.unit %> </h2>
       <h1 style="color: #D92026;" class="mt-4">
         <strong> R$ <%= number_to_currency(@product.price, unit: '', separator: ",") %> </strong>
       </h1>
-      <div >
+      <div>
         <button type="button" class="btn btn-subtract p-0" disabled>
           <i style="color: red;" class="fas fa-minus-square fa-3x"></i>
         </button>
-        <span style="width: 50px;"><input type="number" style="text-align:center; display:inline-block; "
+        <span style="width: 50px;"><input type="number" style="text-align:center; display:inline-block;"
         class="form-control-sm item-quantity" value="1" disabled> </span>
         <button type="button" class="btn btn-add p-0 mr-1">
           <i style="color: green;" class="fas fa-plus-square fa-3x"></i>
         </button>
         <button type="button" class="btn btn-outline-danger"> Adicionar ao Carrinho </button>
       </div>
+      <div class="mt-3">
+       <p> Descrição: <%= @product.description %> </p>
+      </div>
     </div>
   </div>
 </div>
+<div id="total_quantity" data-inventory="<%= @product.total_quantity %>">
+</div>
 <br>
-<% if current_user.id == @product.user_id %>
-  <div class="btn btn-dark mx-5 mb-4 rounded font-weight-bold">
-    <%= link_to 'Editar', edit_product_path(@product) %>
-  </div>
-  <div class="btn btn-danger mx-5 mb-4 rounded font-weight-bold">
-    <%= link_to 'Deletar', product_path(@product), method: :delete %>
-  </div>
+<% if user_signed_in? %>
+  <% if current_user.id == @product.user_id %>
+    <div class="btn btn-dark mx-5 mb-4 rounded font-weight-bold">
+      <%= link_to 'Editar', edit_product_path(@product) %>
+    </div>
+    <div class="btn btn-danger mx-5 mb-4 rounded font-weight-bold">
+      <%= link_to 'Deletar', product_path(@product), method: :delete %>
+    </div>
+  <% end %>
 <% end %>
 <%= javascript_pack_tag 'product' %>

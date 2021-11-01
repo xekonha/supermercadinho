@@ -12,11 +12,7 @@
 @import "components/index";
 @import "pages/index";
 @import "products/show";
-
-.container {
-  max-width: 200vh;
-  background: linear-gradient(gray, lightgray);
-}
+@import "orders/index";
 
 h5 {
   font-weight: bolder;
