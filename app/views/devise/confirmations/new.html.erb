@@ -1,4 +1,4 @@
-<h2>Resend confirmation instructions</h2>
+<h2>Reencaminhar instruções para confirmar</h2>
 
 <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= f.error_notification %>
@@ -13,8 +13,9 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Resend confirmation instructions" %>
+    <%= f.button :submit, "Reencaminhar instruções para confirmar?" %>
   </div>
+  <p class='mb-5'>.</p>
 <% end %>
 
 <%= render "devise/shared/links" %>

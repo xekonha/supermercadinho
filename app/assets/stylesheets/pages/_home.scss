@@ -6,12 +6,17 @@
 
 .cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  // grid-gap: 0;
   flex-grow: 1;
   background: linear-gradient(black, lightgray);
   border: rgb(197, 50, 50) solid 0.2em;
   max-width: 200vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+@media(max-width: 1057px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 .card {

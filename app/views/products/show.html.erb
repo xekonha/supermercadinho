@@ -1,9 +1,9 @@
 <div class="container mt-5">
-  <div class="row justify-content-between">
-    <div id="product-image" class="col-12 col-md-5 px-0">
+  <div class="row-justify-content-between">
+    <div id="product-image" class="col-12 col-md-5 px-0  d-inline">
       <%= cl_image_tag(@product.photo.key, class: "card-img-top", alt: @product.name) %>
     </div>
-    <div class="col-12 col-md-7 p-3">
+    <div class="col-12 col-md-7">
       Categoria: <strong> <%= @product.category %> </strong>
       <h2 class="my-3"> <strong> <%= @product.name %> </strong> - <%= @product.unit %> </h2>
       <h1 style="color: #D92026;" class="mt-4">
@@ -24,7 +24,7 @@
   </div>
 </div>
 <br>
-<% if user_signed_in? %>
+<% if current_user.id == @product.user_id %>
   <div class="btn btn-dark mx-5 mb-4 rounded font-weight-bold">
     <%= link_to 'Editar', edit_product_path(@product) %>
   </div>
