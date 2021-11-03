@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2021_11_01_203057) do
     t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.boolean "completed"
+    t.boolean "completed", default: false
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end

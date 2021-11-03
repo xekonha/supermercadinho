@@ -34,7 +34,7 @@ files.each_with_index do |file, index|
               'name' => parts[-3],
               'description' => parts[-2],
               'unit' => unit,
-              'price' => ((0..100).to_a.sample.to_f - 0.01).round(2),
+              'price' => ((1..100).to_a.sample.to_f - 0.01).round(2),
               'total_quantity' => (1..100).to_a.sample,
               'user' => @user }
 
