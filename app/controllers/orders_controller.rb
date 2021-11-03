@@ -1,20 +1,23 @@
 class OrdersController < ApplicationController
-  # skip_before_action :authenticate_user!, only: %i[index show]
-  before_action :set_order, only: %i[edit update destroy]
-  # skip_after_action :verify_authorized, only: %i[show]
+  # skip_before_action :authenticate_user!, only: %i[index show category]
+  # before_action :set_product, only: %i[show edit update destroy]
+  # skip_after_action :verify_authorized, only: %i[show category my]
+  # skip_before_action :authenticate_user!, only: %i[index show category]
+  # before_action :set_order # only: %i[show edit update destroy]
+  # skip_after_action :verify_authorized
 
   def index
     # @order = order.all
     # Devido as regras do Scope definidas na minha orderPolicy
     # essas duas linhas retornam exatamente a mesma coisa
-    @orders = policy_scope(Order)
+    @orders = Order.where(user: current_user, completed: false)
   end
 
   def show
   end
 
   def new
-    @order = Order.new
+    @order = Order.new(user: current_user, completed: false)
     authorize @order
   end
 
@@ -32,37 +35,21 @@ class OrdersController < ApplicationController
     @order = order.new(order_params)
     @order.user = current_user
     authorize @order
-
     if @order.save
-      redirect_to @order, notice: 'Concluído com sucesso: pedido criado.'
+      redirect_to :back, notice: 'Concluído: produto incluído no carrinho.'
     else
-      render :new
-    end
-  end
-
-  def update
-    authorize @order
-    if @order.update(order_params)
-      redirect_to @order, notice: 'Concluído com sucesso: pedido atualizado.'
-    else
-      render :edit
+      redirect_to :root
     end
   end
 
   def destroy
     authorize @order
     @order.destroy
-    redirect_to orders_url, notice: 'Concluído com sucesso: pedido cancelado.'
+    redirect_to :back, notice: 'Concluído: produto excluído do carrinho.'
   end
 
   private
 
-  def set_product
-    @order = Order.find(params[:id])
-  end
-
   def order_params
     params.require(:order).permit(:product_id, :user_id, :quantity, :date)
   end
-
-end
