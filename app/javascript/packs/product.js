@@ -1,8 +1,9 @@
 var minus = document.querySelector(".btn-subtract")
 var add = document.querySelector(".btn-add");
 var quantity = document.querySelector(".item-quantity");
-var product_total = parseInt(document.getElementById('total_quantity').dataset.inventory);
+// var product_total = parseInt(document.getElementById('total_quantity').dataset.inventory);
 const minimum = 1;
+const maximum = 49;
 
 const productQuantity = () => {
   if (minus) {
