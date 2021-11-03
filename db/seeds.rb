@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'pry-byebug'
 
-# User.all.each { |usr| usr.destroy }
+User.all.each { |usr| usr.destroy }
 @user = User.new('name' => 'rainey', 'email' => 'rainey.lopes@gmail.com', 'role' => 'admin', \
                  'password' => '123456')
 @user.save!
@@ -52,6 +52,7 @@ files.each_with_index do |file, index|
               'user' => @user }
 
   product = Product.new(new_reg)
+  product.user = @user
   ext = file_name.split(".")[1].downcase
   product.photo.attach(io: File.open(file),
                        filename: file_name,
