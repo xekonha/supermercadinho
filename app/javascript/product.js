@@ -11,21 +11,23 @@ const productQuantity = () => {
         minus.disabled = true;
         return; // return to avoid decrementing
       } else {
-        minus.disabled = false;
+          minus.disabled = false;
       }
       quantity.value--;
       if (quantity.value <= maximum) {
         add.disabled = false;
       }
-    });
+    });};
+
+  if (add) {
     add.addEventListener("click", function () {
-      quantity.value++;
-      if (quantity.value > minimum) {
-        minus.disabled = false;
-      }
-      if (quantity.value > maximum) {
-        add.disabled = true;
-      }
+    quantity.value++;
+    if (quantity.value > minimum) {
+      minus.disabled = false;
+    }
+    if (quantity.value > maximum) {
+      add.disabled = true;
+    }
     });
   }
 }

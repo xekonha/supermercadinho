@@ -3,18 +3,19 @@
 <% if @products.blank? %>
   <span> Não há produtos cadastrados. </span>
 <% end %>
-  <div class="card-columns">
+  <div class="cards">
       <% @products.each do |product| %>
         <div class="card mb-2 " id="product-<%= product.name %>">
           <%= link_to product do %>
             <%= cl_image_tag(product.photo.key, class: "card-img-top", alt: product.name) %>
             <h3 class="card-text fw-bold"><%= product.name %></h3>
+            <h5>R$ <%= number_to_currency(product.price, unit: '', separator: ",") %></h5>
           <% end %>
         </div>
       <% end %>
     </div>
   <br>
   <% if user_signed_in? && policy(Product).new? %>
-    <%= link_to "Criar novo produto", new_product_path, class:"btn btn-success text-white", role:"button"%>
+    <%= link_to "Criar novo produto", new_product_path, class:"btn btn-dark text-white", role:"button"%>
   <% end %>
 </div>

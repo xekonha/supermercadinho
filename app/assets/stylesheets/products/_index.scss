@@ -1,4 +1,9 @@
-.card img {
-  display: inline-block;
-  width: 300px;
+.image-box {
+  width: 100px;
+  height: 100px;
+}
+.image-box img {
+  width: 100%;
+  height: auto;
+  text-align: center;
 }

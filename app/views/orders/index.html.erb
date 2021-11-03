@@ -1,32 +1,43 @@
-<h1>Order</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Product</th>
-      <th>Quantity</th>
-      <th>Total</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="cart">
+  <div class="cart-container">
+    <div class="cart-header">
+      <h3 class="cart-heading">Ordens</h3>
+      <h5 class="cart-action">Remover todos</h5>
+    </div>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.product.name %></td>
-        <%#= Aqui estamos utilizando o email do usuário para demonstração %>
-        <%#= Ao inves de vermos o user_id veremos o email do user %>
-        <td><%= order.quantity %></td>
-        <td><%= order.total %></td>
-        <td><%= order.product.price * order.quantity %></td>
-        <td><%= link_to 'Show', order %></td>
-        <% if policy(Order).edit? %>
-          <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <% end %>
-        <% if policy(Order).destroy? %>
-          <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-      </tr>
+      <div class="cart-items">
+        <div class="image-box">
+          <%= cl_image_tag(order.product.photo.key, alt: order.product.name) %>
+        </div>
+        <div class="about">
+          <h2 class="title"><%= order.product.name %></h2>
+          <h3 class="subtitle"><%= order.product.unit %></h3>
+        </div>
+        <div class="counter">
+          <div class="btn-cart btn-subtract">-</div>
+          <div class="count"><%= order.quantity %></div>
+          <div class="btn-cart btn-add">+</div>
+        </div>
+        <div class="prices">
+          <div class="amount" data-price="<% number_to_currency(order.product.price, unit: '') %>">
+            R$ <%= number_to_currency(order.product.price, unit: '', separator: ",")%>
+          </div>
+          <div class="remove"><u>Remover</u></div>
+        </div>
+        <div style="display: none;" id="total_quantity" data-inventory="<%= order.product.total_quantity %>"> </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+    <hr>
+    <div class="checkout">
+      <div class="total">
+        <div class="">
+          <div class="subtotal">Subtotal</div>
+          <div class="items"><%=@orders.length %> itens</div>
+        </div>
+        <div class="total-amount">R$ <span id="total"> 177,43 </span></div>
+      </div>
+      <button class="checkout-button">Finalizar compra</button>
+    </div>
+  </div>
+</div>
+<%= javascript_pack_tag 'order' %>

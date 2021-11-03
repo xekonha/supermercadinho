@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: linear-gradient(lightgray, gray);
   height: 80px;
 }
 
@@ -14,4 +14,8 @@
 
 .nav-item:not(:last-child) {
   box-shadow: 10px 0px 0px -9px red;
+}
+
+.nav-link {
+  font-weight: bolder;
 }

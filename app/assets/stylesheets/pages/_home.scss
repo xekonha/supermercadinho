@@ -1,5 +1,41 @@
 // Specific CSS for your home-page
 .carousel-inner img {
-  height: 400px;
+  max-height: 450px;
   object-fit: cover;
+}
+
+.cards {
+  display: grid;
+  flex-grow: 1;
+  background: linear-gradient(black, lightgray);
+  border: rgb(197, 50, 50) solid 0.2em;
+  max-width: 200vh;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+@media(max-width: 1057px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.card {
+  background: linear-gradient(lightyellow, yellow);
+  background-size: cover;
+  background-position: center;
+  height: auto;
+  border-radius: 3em;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align:center;
+  color: black;
+  text-shadow: 0 0 10px #ebe5e5b3;
+  max-height: 20em;
+}
+
+.card-img-top {
+  border-radius: 2em;
+  max-height: 8em;
 }
