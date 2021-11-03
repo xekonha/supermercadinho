@@ -53,3 +53,4 @@ class OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:product_id, :user_id, :quantity, :date)
   end
+end
