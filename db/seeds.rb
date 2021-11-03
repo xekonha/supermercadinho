@@ -5,7 +5,7 @@ new_reg = {}
 path = "app/assets/images/products/"
 file_path = "#{path}*.*"
 files = Dir[file_path]
-files.first(3).each_with_index do |file, index|
+files.each_with_index do |file, index|
   file_name = file.split('/')[-1]
   file_parts = file_name.split('-')
   parts = []

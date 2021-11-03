@@ -9,8 +9,15 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
   <body>
-    <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-sm-11">
+          <%= render 'shared/navbar' %>
+          <%= render 'shared/flashes' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <p class='mt-2'>.</p>
   </body>
 </html>

@@ -30,3 +30,17 @@
       </a>
   </div>
 </div>
+
+<div class="categories">
+  <div class="cards mx-auto">
+    <% Product::CATEGORY.each do |category| %>
+      <%= link_to category_products_path(category) do %>
+      <div class='card text-align-center m-1 pt-1'>
+        <%= image_tag "category/#{category}.png" %>
+        <p> <%=category%> </p>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+
+</div>
